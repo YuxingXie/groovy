@@ -19,7 +19,7 @@ File-->New-->Project...-->Gradle -->Groovy-->next................
 
 ### First app : Hello Groovy
 
-src/main/groovy下new Groovy Class,输入名字Hello，OK，便新建好了一个Hello.groovy文件：
+src/main/groovy下new--> Groovy Class,输入名字Hello，点OK，便新建好了一个Hello.groovy文件：
 ```groovy
 class Hello {
 }
