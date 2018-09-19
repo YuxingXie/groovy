@@ -1,3 +1,5 @@
+import com.lingyun.study.groovy.AboutThis
+
 println 'Hello Groovy!'
 
 for(i in 0..2) println 'xxx'
@@ -13,3 +15,5 @@ println "cmd cd ../".execute().getClass().name
 String obj;
 print obj?.charAt(0)
 print obj?.length
+
+AboutThis.learn('a','b')
