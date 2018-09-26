@@ -15,8 +15,27 @@ dependencies {
     compile 'org.codehaus.groovy:groovy-all:2.3.11'
     testCompile group: 'junit', name: 'junit', version: '4.12'
 }
-task helloWorld{
+task 'helloWorld'{
     doLast {
         println 'Hello world!'
     }
 }
+task startSession{
+    doLast{
+        chant()
+    }
+}
+def chant(){
+    ant.echo(message:'Repeat after me...')
+}
+3.times {
+    task "yayGradle$it"{
+        doLast{
+            println 'Gradle rocks'
+        }
+    }
+}
+yayGradle0.dependsOn startSession
+yayGradle2.dependsOn yayGradle1,yayGradle0
+task groupTherapy(dependsOn:yayGradle2)
+

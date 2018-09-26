@@ -195,5 +195,49 @@ Project接口的task方法，方法返回类型是org.gradle.api.Task。
 
 双击helloWorld节点，控制台同样打印出了“Hello world!”。
 
+### Gradle的DSL
 
+DSL:(Domain Specific Language)领域专用语言
+
+理解这门语言需要知道它的两个重要元素：task和action。
+
+action中的doLast可以用“<<”表示：
+```groovy
+task helloWorld << {
+        println 'Hello world!'
+}
+```
+可以运行，不过出现了警告，不建议使用这种方式：
+```text
+The Task.leftShift(Closure) method has been deprecated and is scheduled to be removed in Gradle 5.0. Please use Task.doLast(Action) instead.
+```
+说实话，习惯了java啰嗦的语法，某些简单语法反而不适应了。我宁愿啰嗦点也不要语意不明，或者加重记忆负担。
+
+下面的代码展示了，一些更高级的特性。好在我学了点groovy皮毛，能看得懂了。
+
+和书中的代码比较，我没有使用“<<”语法：
+```groovy
+task startSession{
+    doLast{
+        chant()
+    }
+}
+def chant(){
+    ant.echo(message:'Repeat after me...')
+}
+3.times {
+    task "yayGradle$it"{
+        doLast{
+            println 'Gradle rocks'
+        }
+    }
+}
+yayGradle0.dependsOn startSession
+yayGradle2.dependsOn yayGradle1,yayGradle0
+task groupTherapy(dependsOn:yayGradle2)
+
+```
+这里有点颠覆我之前关于“helloWorld”是什么的推测。因为task "yayGradle$it"是一个字符串，所以它可能不是一个变量名。
+我吧helloWorld也加上单引号，task仍然是可以执行的。所以它可能是task方法的参数。这个字符串代表这个任务名。那又怎么解释
+不带引号的形式呢？它也是字符串吗？
 
