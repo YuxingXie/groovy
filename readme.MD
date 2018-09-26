@@ -237,7 +237,10 @@ yayGradle2.dependsOn yayGradle1,yayGradle0
 task groupTherapy(dependsOn:yayGradle2)
 
 ```
-这里有点颠覆我之前关于“helloWorld”是什么的推测。因为task "yayGradle$it"是一个字符串，所以它可能不是一个变量名。
+这里有点颠覆我之前的几个理解：
+
+首先是“helloWorld”是什么的推测。因为task "yayGradle$it"是一个字符串，所以它可能不是一个变量名。
 我吧helloWorld也加上单引号，task仍然是可以执行的。所以它可能是task方法的参数。这个字符串代表这个任务名。那又怎么解释
 不带引号的形式呢？它也是字符串吗？我就当它是吧，groovy没什么不可能。
 
+其次是build.gradle是Project接口的实现的猜测。一个接口为什么可以实现这么多个task方法呢？它可能就只是一个可执行的方法集合。
