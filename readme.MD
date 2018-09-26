@@ -187,10 +187,13 @@ Project接口的task方法，方法返回类型是org.gradle.api.Task。
 然后我认为task方法内部是返回了一个匿名内部类，类型是Task，doLast是Task接口定义的一个方法，在匿名内部类中实现了。
 
 至于为什么那么多接口方法为什么只实现了doLast,我认为我可能对groovy了解不够吧，不能用java的思维方式思考groovy。
+也可能这个build.gradle继承自一个实现了Project接口的抽象类吧。
 
-另外，在gradle的tool button中有如下发现：
+另外，在我的IDE(Intellij Idea)的gradle tool button中发现点小东西：
 
 ![](https://github.com/YuxingXie/groovy/raw/master/images/1.png) 
+
+双击helloWorld节点，控制台同样打印出了“Hello world!”。
 
 
 
