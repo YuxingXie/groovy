@@ -239,5 +239,5 @@ task groupTherapy(dependsOn:yayGradle2)
 ```
 这里有点颠覆我之前关于“helloWorld”是什么的推测。因为task "yayGradle$it"是一个字符串，所以它可能不是一个变量名。
 我吧helloWorld也加上单引号，task仍然是可以执行的。所以它可能是task方法的参数。这个字符串代表这个任务名。那又怎么解释
-不带引号的形式呢？它也是字符串吗？
+不带引号的形式呢？它也是字符串吗？我就当它是吧，groovy没什么不可能。
 
