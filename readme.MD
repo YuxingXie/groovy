@@ -150,3 +150,47 @@ print obj?.length
 可能，这个GitHub项目会变成一个Gradle学习项目。不如试试吧，因为我创建它的时候碰巧选择了new Gradle project。
 
 ## 新的开始，Gradle
+
+同样的，介绍什么的免了，它和ant maven什么关系，和敏捷开发什么关系慢慢去琢磨吧。
+
+直接从安装开始。大概在书的39页。
+
+注意Mac和windows的安装，都需要GRADLE_HOME环境变量，以及导出到PATH中。我安装的版本是Gradle 4.1。
+
+### Hello world!
+
+在build.gradle中写一段代码：
+```groovy
+task helloWorld{
+    doLast {
+        println 'Hello world!'
+    }
+}
+```
+在终端中运行命令：
+```text
+$ gradle -q helloWorld
+```
+输出了字符串"Hello world!"。
+
+#### 代码解释：
+
+先说明，代码解释不是抄书上的，我觉得书上的说得云里雾里。这是我的理解，但是可能理解有误，坑了你请莫怪。
+
+我认为build.gradle文件是一个实现了org.gradle.api.Project接口的类，因为我按command键(win下Ctrl)导航task,代码导航到了
+Project接口的task方法，方法返回类型是org.gradle.api.Task。
+
+这个helloWorld是什么呢？task方法的参数？应该不是。引用task方法返回值的变量名？暂且这样认为吧。
+
+另外，build.gradle还可能实现了别的接口，再研究。
+
+然后我认为task方法内部是返回了一个匿名内部类，类型是Task，doLast是Task接口定义的一个方法，在匿名内部类中实现了。
+
+至于为什么那么多接口方法为什么只实现了doLast,我认为我可能对groovy了解不够吧，不能用java的思维方式思考groovy。
+
+另外，在gradle的tool button中有如下发现：
+
+![](https://github.com/YuxingXie/groovy/raw/master/images/1.png) 
+
+
+
